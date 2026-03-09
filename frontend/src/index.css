@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Orbitron", sans-serif;
+}
+
+/* ─── Base ─── */
+body {
+  background: #08142b;
+  /* Deep Space Navy */
+  color: #e2e8f0;
+  /* Silver-ish text */
+}
+
+/* ─── Scrollbar ─── */
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #060e20;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #00ffff40;
+    border-radius: 10px;
+    border: 1px solid #71809650;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #00ffff80;
+  }
+}
+
+/* ─── Neon Glow Utilities ─── */
+.neon-cyan {
+  color: #00ffff;
+  text-shadow: 0 0 7px #00ffff88, 0 0 20px #00ffff44;
+}
+
+.neon-electric-blue {
+  color: #00d2ff;
+  text-shadow: 0 0 7px #00d2ff88, 0 0 20px #00d2ff44;
+}
+
+.neon-red {
+  color: #ff3b5c;
+  text-shadow: 0 0 7px #ff3b5c88, 0 0 20px #ff3b5c44;
+}
+
+.neon-yellow {
+  color: #ffd60a;
+  text-shadow: 0 0 7px #ffd60a88;
+}
+
+.neon-orange {
+  color: #ff9f0a;
+  text-shadow: 0 0 7px #ff9f0a88;
+}
+
+/* ─── Cyberpunk Glowing Border -> Professional Silver Border ─── */
+.metal-border {
+  border: 1px solid #94a3b850;
+  box-shadow: inset 0 0 15px #00d2ff05, 0 0 10px #00d2ff05;
+}
+
+.metal-border-cyan {
+  border: 1px solid #00ffff40;
+  box-shadow: inset 0 0 20px #00ffff08, 0 0 10px #00ffff10;
+}
+
+.metal-border-blue {
+  border: 1px solid #00d2ff40;
+  box-shadow: inset 0 0 20px #00d2ff08, 0 0 10px #00d2ff10;
+}
+
+/* ─── Glowing Button -> Metallic Button with Electric Blue glow ─── */
+.cyber-btn {
+  position: relative;
+  background: linear-gradient(135deg, #0f1c3f, #08142b);
+  border: 1px solid #94a3b860;
+  color: #e2e8f0;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00d2ff30, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cyber-btn:hover::before {
+  opacity: 1;
+}
+
+.cyber-btn:hover {
+  box-shadow: 0 0 15px #00d2ff40, inset 0 0 10px #00d2ff20;
+  border-color: #00d2ff80;
+  color: #00ffff;
+}
+
+.cyber-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cyber-btn:disabled:hover::before {
+  opacity: 0;
+}
+
+.cyber-btn:disabled:hover {
+  box-shadow: none;
+  border-color: #94a3b860;
+  color: #e2e8f0;
+}
+
+/* ─── Grid Bg Pattern ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ─── Animated Scanner Line ─── */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scanline::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d2ff40, transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ─── Spinner ─── */
+@keyframes cyberSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cyberPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.cyber-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #00ffff20;
+  border-top-color: #00ffff;
+  border-radius: 50%;
+  animation: cyberSpin 1s linear infinite;
+  box-shadow: 0 0 15px #00ffff40, inset 0 0 15px #00ffff20;
+}
+
+.cyber-pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #00d2ff40;
+  border-radius: 50%;
+  animation: cyberPulse 2s ease-in-out infinite;
+}
+
+/* ─── Tab Styles ─── */
+.cyber-tab {
+  padding: 0.75rem 1.5rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cyber-tab:hover {
+  color: #00ffff;
+}
+
+.cyber-tab.active {
+  color: #00ffff;
+  border-color: #00ffff50;
+  background: #00ffff10;
+  box-shadow: 0 0 10px #00ffff15;
+}
+
+/* ─── Fade-in Animation ─── */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+/* ─── Textarea ─── */
+.cyber-textarea {
+  background: #060e20;
+  border: 1px solid #71809630;
+  color: #f1f5f9;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  resize: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cyber-textarea:focus {
+  outline: none;
+  border-color: #00ffff60;
+  box-shadow: 0 0 15px #00ffff15;
+}
+
+.cyber-textarea::placeholder {
+  color: #64748b;
+}
+
+/* ─── Input ─── */
+.cyber-input {
+  background: #060e20;
+  border: 1px solid #71809630;
+  color: #f1f5f9;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cyber-input:focus {
+  outline: none;
+  border-color: #00d2ff60;
+  box-shadow: 0 0 15px #00d2ff15;
+}
+
+.cyber-input::placeholder {
+  color: #64748b;
+}
+
+/* ─── Risk Badge ─── */
+.badge-critical {
+  background: #ff3b5c15;
+  color: #ff3b5c;
+  border: 1px solid #ff3b5c30;
+}
+
+.badge-high {
+  background: #ff9f0a15;
+  color: #ff9f0a;
+  border: 1px solid #ff9f0a30;
+}
+
+.badge-medium {
+  background: #ffd60a15;
+  color: #ffd60a;
+  border: 1px solid #ffd60a30;
+}
+
+.badge-low {
+  background: #39ff1415;
+  color: #39ff14;
+  border: 1px solid #39ff1430;
+}
+
+/* ─── Toast ─── */
+@keyframes toastIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toastIn 0.4s ease-out;
+}
+
+.toast-exit {
+  animation: toastOut 0.4s ease-in forwards;
+}
+
+/* ─── Print Styles (for react-to-print PDF) ─── */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: #050510 !important;
+  }
+
+  /* Hide non-printable elements */
+  header,
+  .scanline::after,
+  .toast-enter,
+  .toast-exit,
+  .cyber-btn,
+  .cyber-tab,
+  button {
+    display: none !important;
+  }
+
+  /* Show only the report content */
+  #pdf-report-container {
+    display: block !important;
+    width: 100% !important;
+    padding: 20px !important;
+    overflow: visible !important;
+  }
+
+  #pdf-report-container * {
+    break-inside: avoid;
+  }
+
+  #pdf-report-container button {
+    display: none !important;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+}

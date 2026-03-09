@@ -1,0 +1,10 @@
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+langchain-community>=0.0.10
+langchain-huggingface>=0.0.3
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+web3>=6.0.0
+pydantic>=2.0.0
+ollama>=0.1.6
+unstructured>=0.10.0
