@@ -132,7 +132,7 @@ ChainSentry AI represents that standard. Build boldly, audit effortlessly.
 
 ## 🎥 See It in Action
 
-▶️ **[Watch the 3-Minute Demo Video Here](YOUTUBE_LINKINIZ_BURAYA_GELECEK)**
+▶️ **[Watch the Demo Video Here](https://www.youtube.com/watch?v=UeQ4cAVqIbE)**
 
 ## 🏆 Hackathon Tracks & Bounties Targeted
 - **Avalanche Core Wallet Integration:** Native wallet connection via `window.avalanche`.
